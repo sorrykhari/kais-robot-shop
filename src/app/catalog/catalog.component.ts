@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf, NgClass, NgStyle, CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'bot-catalog',
-  imports: [NgFor],
+  imports: [NgFor, NgIf, NgStyle, NgClass, CurrencyPipe],
   templateUrl: './catalog.component.html',
-  styleUrl: './catalog.component.css'
+  styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent {
-  products: any[];
+  products: IProduct[];
   filter: string = '';
 
   constructor() {
@@ -24,7 +24,6 @@ export class CatalogComponent {
     price: 1220.5,
     discount: 0.2,
   },
-  null,
   {
     id: 17,
     description: "A spring base - great for reaching high places.",
@@ -191,6 +190,10 @@ export class CatalogComponent {
 ];
   }
 
+  getDiscountedClasses(product: IProduct) {
+    return { strikethrough: product.discount > 0 }; // NgClass needs object form
+  }
+
   getImageUrl(product: IProduct) {
     if (!product) return '';
     return '/assets/images/robot-parts/' + product.imageName;
@@ -199,6 +202,6 @@ export class CatalogComponent {
   getFilteredProducts() {
     return this.filter === ''
     ? this.products
-    : this.products.filter((product: any) => product.category === this.filter);
+    : this.products.filter((product: IProduct) => product.category === this.filter);
   }
 }
