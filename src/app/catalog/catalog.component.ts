@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
 import { NgFor, NgIf, NgClass, NgStyle, CurrencyPipe } from '@angular/common';
+import { ProductDetailsComponent } from "../product-details/product-details.component";
 
 @Component({
   selector: 'bot-catalog',
-  imports: [NgFor, NgIf, NgStyle, NgClass, CurrencyPipe],
+  imports: [NgFor, NgIf, NgStyle, NgClass, CurrencyPipe, ProductDetailsComponent],
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent {
   products: IProduct[];
+  cart: IProduct[] = [];
   filter: string = '';
 
   constructor() {
@@ -190,14 +192,19 @@ export class CatalogComponent {
 ];
   }
 
+  addToCart(product: IProduct) {
+    this.cart.push(product);
+    console.log(`${product.name} added to cart.`);
+  }
+
   getDiscountedClasses(product: IProduct) {
     return { strikethrough: product.discount > 0 }; // NgClass needs object form
   }
-
-  getImageUrl(product: IProduct) {
+getImageUrl(product: IProduct) {
     if (!product) return '';
     return '/assets/images/robot-parts/' + product.imageName;
   }
+  
 
   getFilteredProducts() {
     return this.filter === ''
