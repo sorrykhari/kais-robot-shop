@@ -5,7 +5,7 @@ import { ProductDetailsComponent } from "../product-details/product-details.comp
 
 @Component({
   selector: 'bot-catalog',
-  imports: [NgFor, NgIf, NgStyle, NgClass, CurrencyPipe, ProductDetailsComponent],
+  imports: [NgFor, ProductDetailsComponent],
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.css']
 })
@@ -191,20 +191,6 @@ export class CatalogComponent {
   },
 ];
   }
-
-  addToCart(product: IProduct) {
-    this.cart.push(product);
-    console.log(`${product.name} added to cart.`);
-  }
-
-  getDiscountedClasses(product: IProduct) {
-    return { strikethrough: product.discount > 0 }; // NgClass needs object form
-  }
-getImageUrl(product: IProduct) {
-    if (!product) return '';
-    return '/assets/images/robot-parts/' + product.imageName;
-  }
-  
 
   getFilteredProducts() {
     return this.filter === ''
