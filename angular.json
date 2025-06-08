@@ -66,7 +66,8 @@
               "buildTarget": "kais-robot-shop:build:production"
             },
             "development": {
-              "buildTarget": "kais-robot-shop:build:development"
+              "buildTarget": "kais-robot-shop:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
