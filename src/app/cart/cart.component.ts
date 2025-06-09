@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from '../catalog/product.model';
 import { CartService } from './cart.service';
+import { CommonModule } from '@angular/common';
+import { IProduct } from '../catalog/product.model';
 
 @Component({
   selector: 'bot-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
+  imports: [CommonModule]
 })
 export class CartComponent implements OnInit {
   private cart: IProduct[] = [];

@@ -2,24 +2,17 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { SiteHeaderComponent } from './site-header/site-header.component';
-import { CatalogComponent } from './catalog/catalog.component';
+import { CommonModule, CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { CartComponent } from './cart/cart.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    CatalogComponent,
-    SiteHeaderComponent
-  ],
+  declarations: [],
   imports: [
-    BrowserModule
+    BrowserModule, NgClass, NgFor, NgIf, CurrencyPipe, CartComponent, AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [CommonModule]
 })
 export class AppModule {
   
